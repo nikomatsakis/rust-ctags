@@ -1,8 +1,22 @@
 #!/bin/bash
 
 if [[ "$1" == "" ]]; then
-    echo Usage: rust-ctags dirs...
+    echo Usage: rust-ctags [--vim] dirs...
+    echo
+    echo Generates a TAGS file with Rust contents from the given directories.
+    echo
+    echo Options:
+    echo
+    echo    --vim: Generates a VIM-style TAGS file. By default,
+    echo           an emacs-style file is generated.
     exit 1
+fi
+
+if [[ "$1" == "--vim" ]]; then
+    shift
+    OPTIONS=""
+else
+    OPTIONS="-e"
 fi
 
 MYDIR=$(dirname $0)
@@ -22,5 +36,5 @@ for SRCDIR in "$@"; do
         exit 1
     fi
 
-    ctags -a -e -f TAGS --options="$MYDIR/ctags.rust" --languages=Rust --recurse "$SRCDIR"
+    ctags -a $OPTIONS -f TAGS --options="$MYDIR/ctags.rust" --languages=Rust --recurse "$SRCDIR"
 done
