@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 if [[ "$1" == "" ]]; then
-    echo Usage: rust-ctags [--vim] dirs...
-    echo
-    echo Generates a TAGS file with Rust contents from the given directories.
-    echo
-    echo Options:
-    echo
-    echo    --vim: Generates a VIM-style TAGS file. By default,
-    echo           an emacs-style file is generated.
+    echo 'Usage: rust-ctags [--vim] dirs...'
+    echo ''
+    echo 'Generates a TAGS file with Rust contents from the given directories.'
+    echo ''
+    echo 'Options:'
+    echo ''
+    echo '   --vim: Generates a VIM-style TAGS file. By default,'
+    echo '          an emacs-style file is generated.'
     exit 1
 fi
 
